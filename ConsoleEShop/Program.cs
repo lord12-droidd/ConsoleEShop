@@ -7,6 +7,7 @@ namespace ConsoleEShop
 {
     interface ICheck
     {
+        bool CheckField(ref string field);
         bool CheckEmail(string email);
         bool CheckLogin(string login);
         bool CheckEnter(string login, string password);
@@ -77,12 +78,24 @@ namespace ConsoleEShop
     }
     class Checker : ICheck
     {
-        UsersLocalDB dB = new UsersLocalDB();
+        public bool CheckField(ref string field)  // Можливий нескінченний цикл нада перевірити буде
+        {
+            while (true)
+            {
+                if(field != "")
+                {
+                    return true;
+                }
+                Console.WriteLine("Поле не може бути пустим");
+                field = Console.ReadLine();
+            }
+        }
         public bool CheckEmail(string email)
         {
-            for (int i = 0; i < dB.GetRegistredGuests.Count; i++)
+            
+            for (int i = 0; i < UsersLocalDB.GetRegistredGuests.Count; i++)
             {
-                if (dB.GetRegistredGuests[i].Email == email)
+                if (UsersLocalDB.GetRegistredGuests[i].Email == email)
                 {
                     return true;
                 }
@@ -92,9 +105,9 @@ namespace ConsoleEShop
 
         public bool CheckEnter(string login, string password)
         {
-            for (int i = 0; i < dB.GetRegistredGuests.Count; i++)
+            for (int i = 0; i < UsersLocalDB.GetRegistredGuests.Count; i++)
             {
-                if (dB.GetRegistredGuests[i].Login == login && dB.GetRegistredGuests[i].Password == password)
+                if (UsersLocalDB.GetRegistredGuests[i].Login == login && UsersLocalDB.GetRegistredGuests[i].Password == password)
                 {
                     return true;
                 }
@@ -104,9 +117,9 @@ namespace ConsoleEShop
 
         public bool CheckLogin(string login)
         {
-            for (int i = 0; i < dB.GetRegistredGuests.Count; i++)
+            for (int i = 0; i < UsersLocalDB.GetRegistredGuests.Count; i++)
             {
-                if (dB.GetRegistredGuests[i].Login == login)
+                if (UsersLocalDB.GetRegistredGuests[i].Login == login)
                 {
                     return true;
                 }
@@ -114,40 +127,33 @@ namespace ConsoleEShop
             return false;
         }
     }
-    class UsersLocalDB
+    static class UsersLocalDB
     {
-        private List<RegistredGuest> registredGuests = new List<RegistredGuest>();
-        public List<RegistredGuest> GetRegistredGuests
+        static private List<RegistredGuest> registredGuests = new List<RegistredGuest>();
+        static public List<RegistredGuest> GetRegistredGuests
         {
             get
             {
                 return registredGuests;
             }
         }
-        public int Lenght
-        {
-            get
-            {
-                return registredGuests.Count;
-            }
-        }
-        public void Add(RegistredGuest guest)
+        static public void Add(RegistredGuest guest)
         {
             registredGuests.Add(guest);
         }
     }
 
-    class ProductsLocalDB
+    static class ProductsLocalDB
     {
-        List<Product> productsDB = new List<Product>();
-        public List<Product> GetProducts
+        static private List<Product> productsDB = new List<Product>();
+        static public List<Product> GetProducts
         {
             get
             {
                 return productsDB;
             }
         }
-        public void Add(Product product)
+        static public void Add(Product product)
         {
             productsDB.Add(product);
         }
@@ -176,8 +182,6 @@ namespace ConsoleEShop
 
     class Guest : IGuest
     {
-        UsersLocalDB dB = new UsersLocalDB();
-        ProductsLocalDB productsDB = new ProductsLocalDB();
         Checker checker = new Checker();
         Register register = new Register();
         public void Registration()
@@ -188,14 +192,16 @@ namespace ConsoleEShop
                 register.InputEmail(),
                 register.InputLogin(),
                 register.InputPassword());
-            dB.Add(registredGuest);
+            UsersLocalDB.Add(registredGuest);
         }
         public bool Enter()
         {
             Console.WriteLine("Вхід у систему, введіть логін:");
             string login = Console.ReadLine();  // додати перевірку на пустоту поля
+            checker.CheckField(ref login);
             Console.WriteLine("Вхід у систему, введіть пароль:");
             string password = Console.ReadLine(); // додати перевірку на пустоту поля
+            checker.CheckField(ref password);
             if (checker.CheckEnter(login, password))
             {
                 Console.WriteLine($"Ви увійшли на сайт як {login}");
@@ -206,24 +212,25 @@ namespace ConsoleEShop
 
         public void ViewProductsList()
         {
-            for(int i = 0; i < productsDB.GetProducts.Count; i++)
+            
+            for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)
             {
-                Console.WriteLine($"{i}){productsDB.GetProducts[i]}");
+                Console.WriteLine($"{i}){ProductsLocalDB.GetProducts[i]}");
             }
         }
         public void SearchProduct()
         {
             string searched = Console.ReadLine();
-            for (int i = 0; i < productsDB.GetProducts.Count; i++)
+            for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)
             {
-                if(searched == productsDB.GetProducts[i].Name)
+                if(searched == ProductsLocalDB.GetProducts[i].Name)
                 {
-                    Console.WriteLine($"{i}){productsDB.GetProducts[i]}");
+                    Console.WriteLine($"{i}){ProductsLocalDB.GetProducts[i]}");
                 }
             }
         }
     }
-    class RegistredGuest
+    class RegistredGuest : Guest
     {
         public string Name { set; get; }
         public string Lastname { set; get; }
