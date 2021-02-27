@@ -5,25 +5,11 @@ using System.Collections.Generic;
 
 namespace ConsoleEShop
 {
-    interface IObserve
-    {
-        void ShowProducts();
-    }
-    interface IRegister
-    {
-        string InputName();
-        string InputSurname();
-        string InputEmail();
-        string InputLogin();
-        string InputPassword();
-    }
-
     interface ICheck
     {
         bool CheckEmail(string email);
         bool CheckLogin(string login);
         bool CheckEnter(string login, string password);
-
     }
     interface IUser
     {
@@ -36,7 +22,7 @@ namespace ConsoleEShop
         bool Enter();
     }
 
-    class Register : IRegister
+    class Register
     {
         Checker checker = new Checker();
         public string InputName()
