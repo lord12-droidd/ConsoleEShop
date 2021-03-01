@@ -74,6 +74,14 @@ namespace ConsoleEShop
             return false;
         }
 
+        public bool CheckAdminEnter(string login, string password)
+        {
+            if (UsersLocalDB.GetRegistredGuests[0].Login == login && UsersLocalDB.GetRegistredGuests[0].Password == password)
+            {
+                return true;
+            }
+            return false;
+        }
         public bool CheckLogin(string login)
         {
             for (int i = 0; i < UsersLocalDB.GetRegistredGuests.Count; i++)
@@ -94,6 +102,14 @@ namespace ConsoleEShop
                 {
                     return true;
                 }
+            }
+            return false;
+        }
+        public bool OrderisNull(Order order)
+        {
+            if(order == null)
+            {
+                return true;
             }
             return false;
         }

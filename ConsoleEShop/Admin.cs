@@ -20,6 +20,10 @@ namespace ConsoleEShop
             _password = password;
             rights = Rights.Admin;
         }
+        public Admin(Rights rights) : base(Rights.Admin)
+        {
+
+        }
         public void AddNewProduct()
         {
             ProductCreater creater = new ProductCreater();
@@ -33,17 +37,23 @@ namespace ConsoleEShop
             ProductsLocalDB.Add(newProduct);
             MenuBacker.BackMessage();
         }
-        public void ChangeProductInformation(Product product)
+        public void ChangeProductInformation()
         {
+            Console.WriteLine("Введіть айди товару, який хочете змінити");
+            string id = Console.ReadLine();
             ProductCreater changer = new ProductCreater();
             for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)
             {
-                if (ProductsLocalDB.GetProducts[i].ID == product.ID)
+                if (Convert.ToString(ProductsLocalDB.GetProducts[i].ID) == id)
                 {
                     ProductsLocalDB.GetProducts[i].Name = changer.InputName();
                     ProductsLocalDB.GetProducts[i].Category = changer.InputCategory();
                     ProductsLocalDB.GetProducts[i].Description = changer.InputDescription();
                     ProductsLocalDB.GetProducts[i].Cost = changer.InputCost();
+                }
+                else if(Convert.ToString(ProductsLocalDB.GetProducts[i].ID) != id && i == ProductsLocalDB.GetProducts.Count-1)
+                {
+                    Console.WriteLine("Товара з таким айди немає");
                 }
             }
             MenuBacker.BackMessage();

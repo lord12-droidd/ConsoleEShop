@@ -13,6 +13,7 @@ namespace ConsoleEShop
 
         public List<Product> GetOrder()
         {
+            order.ToString();
             return order;
         }
         public RegistredGuest Receiver { private set; get; }
@@ -32,6 +33,14 @@ namespace ConsoleEShop
         public void AddProduct(Product product)
         {
             order.Add(product);
+        }
+        public override string ToString()
+        {
+            foreach(var product in order)
+            {
+                product.ToString();
+            }
+            return $"Полная стоимость заказа: {FullCost},";
         }
     }
 }

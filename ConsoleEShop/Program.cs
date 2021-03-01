@@ -48,10 +48,9 @@ namespace ConsoleEShop
         public static User currentUser;
         static void Main(string[] args)
         {
-            while (true)
-            {
-
-            }
+            Processes processes = new Processes();
+            processes.Start();
+            Console.ReadKey();
         }
     }
     // зробити юзера який має статус, тому що ми повинні якось переходити з стану гостя в стан зареєстрованного користувача, при виконані методу Ентер, ми будемо міняти статус юзера з гостя на зарєганого чи адміна
