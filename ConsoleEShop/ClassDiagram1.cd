@@ -1,83 +1,157 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ConsoleEShop.Register">
-    <Position X="12" Y="3.25" Width="1.5" />
+  <Class Name="ConsoleEShop.Program">
+    <Position X="7.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAQEAEAJAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConsoleEShop.Checker" BaseTypeListCollapsed="true">
-    <Position X="6.75" Y="0.5" Width="1.5" />
+  <Class Name="ConsoleEShop.ProductCreater">
+    <Position X="9" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAIgACAAAAAAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAABAAAAACQAAAABAAAAAAAAAAQEAAAAAAAAAAA=</HashCode>
+      <FileName>ProductCreater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleEShop.Register">
+    <Position X="17.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAQEAEAJAAAAAAA=</HashCode>
+      <FileName>Register.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleEShop.Checker" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAABAgAAIgACAAAAAAAAAAA=</HashCode>
+      <FileName>Checker.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="ConsoleEShop.UsersLocalDB">
-    <Position X="6.75" Y="2.25" Width="1.5" />
+    <Position X="7.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <FileName>UsersLocalDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ConsoleEShop.ProductsLocalDB">
-    <Position X="8.5" Y="0.5" Width="1.5" />
+    <Position X="10.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <FileName>ProductsLocalDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleEShop.OrderLocalDB">
+    <Position X="15.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderLocalDB.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ConsoleEShop.Product">
-    <Position X="12" Y="0.5" Width="1.5" />
+    <Position X="10.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAEAAAAABQAAAAAAAAAAAAAAAAACAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAAAAAggAAEAAAAABQAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleEShop.Order">
+    <Position X="15.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAFAAACAAAAAAAAQAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Order.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ConsoleEShop.Guest" BaseTypeListCollapsed="true">
-    <Position X="10.25" Y="0.5" Width="1.5" />
+    <Position X="10" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAAACAAAAAAAQAAAAAEAAAAAQAAAAAEAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAAgAAAACAAAAAAAQAAAAAEAAAAAQAACAAEAAA=</HashCode>
+      <FileName>Guest.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="ConsoleEShop.RegistredGuest">
-    <Position X="10.25" Y="3.5" Width="1.5" />
+    <Position X="14.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAIAAAAAAQAAAAAAAACAAAQAAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>AAQAIAAABCAQAQAMAAEAAAQAAAgAAAACIAAQIAAACAE=</HashCode>
+      <FileName>RegistredGuest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConsoleEShop.Admin">
+    <Position X="19.5" Y="7.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAIgAAAAAAAAAAAAEAIAAAAAgIAAAAAAAAIAAAAAE=</HashCode>
+      <FileName>Admin.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ConsoleEShop.Program">
-    <Position X="8.5" Y="3" Width="1.5" />
+  <Class Name="ConsoleEShop.MenuBacker" Collapsed="true">
+    <Position X="22.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>MenuBacker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleEShop.Processes" Collapsed="true">
+    <Position X="22.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Processes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleEShop.User" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="ConsoleEShop.ICheck">
-    <Position X="5" Y="4" Width="1.5" />
+    <Position X="5.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAIgACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAgAAIgACAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ConsoleEShop.IUser">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="13.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ConsoleEShop.IGuest">
-    <Position X="5" Y="2.25" Width="1.5" />
+    <Position X="13.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="ConsoleEShop.IRegistred" Collapsed="true">
+    <Position X="13.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ConsoleEShop.Rights">
+    <Position X="19.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAg=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ConsoleEShop.OrderStatus">
+    <Position X="19.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAABAAAAACIAAAAAQAAAACAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
