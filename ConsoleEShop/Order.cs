@@ -8,9 +8,8 @@ namespace ConsoleEShop
     class Order
     {
         List<Product> order = new List<Product>();
-        OrderStatus status = OrderStatus.New;
         public OrderStatus Status { get; set; }
-
+        public int ID { set; get; }
         public List<Product> GetOrder()
         {
             order.ToString();
@@ -25,10 +24,24 @@ namespace ConsoleEShop
         }
         public Order(List<Product> products, RegistredGuest receiver)
         {
+            ID = OrderLocalDB.GetOrders.Count + 1;
             order = products;
-            FullCost = order.Sum(n => n.Cost);
+            FullCost = CountFullPrice();
             Receiver = receiver;
-            status = OrderStatus.New;
+            Status = OrderStatus.New;
+        }
+        public Order(List<Product> order)
+        {
+            this.order = order;
+        }
+        public decimal CountFullPrice()
+        {
+            decimal sum = 0;
+            for(int i = 0; i < order.Count; i++)
+            {
+                sum = sum + order[i].Cost;
+            }
+            return sum;
         }
         public void AddProduct(Product product)
         {
@@ -38,9 +51,10 @@ namespace ConsoleEShop
         {
             foreach(var product in order)
             {
-                product.ToString();
+                Console.WriteLine(product);
+                Console.WriteLine($"{Status}");
             }
-            return $"Полная стоимость заказа: {FullCost},";
+            return $"Полная стоимость заказа: {FullCost}\n ID: {ID}";
         }
     }
 }

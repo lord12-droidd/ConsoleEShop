@@ -8,7 +8,6 @@ namespace ConsoleEShop
     {
         public void Start()
         {
-
             User current = new Guest(Rights.Guest);
             while (true)
             {
@@ -29,10 +28,10 @@ namespace ConsoleEShop
                             (current as Guest).Registration();
                             break;
                         case "3":
-                            if ((current as Guest).Enter())
+                            if ((current as Guest).Enter(ref current))
                             {
-                                current = new RegistredGuest(Rights.RegistredUser);
-                                current.rights = Rights.RegistredUser;
+                               // current = new RegistredGuest(Rights.RegistredUser);
+                                //current.rights = Rights.RegistredUser;
                                 break;
                             }
                             else
@@ -40,9 +39,9 @@ namespace ConsoleEShop
                                 break;
                             }
                         case "4":
-                            if((current as Guest).EnterAsAdmin(current))
+                            if((current as Guest).EnterAsAdmin(ref current))
                             {
-                                current = new Admin(Rights.Admin);
+                                //current = new Admin(Rights.Admin);
                                 current.rights = Rights.Admin;
                                 break;
                             }
@@ -63,13 +62,13 @@ namespace ConsoleEShop
                             (current as RegistredGuest).CreateOrder();
                             break;
                         case "3":
-                            (current as RegistredGuest).OrderRegistration();
+                            (current as RegistredGuest).OrderRegistration((current as RegistredGuest).Login);
                             break;
                         case "4":
-                            (current as RegistredGuest).OrderRegistration(); // історію замовлень доробити
+                            (current as RegistredGuest).ShowAllUserOrders(current); // історію замовлень доробити
                             break;
                         case "5":
-                            (current as RegistredGuest).ChangeOrderStatus();
+                            (current as RegistredGuest).ChangeOrderStatus((current as RegistredGuest).Login);
                             break;
                         case "6":
                             (current as RegistredGuest).ChangePersonalInformation();
@@ -94,7 +93,7 @@ namespace ConsoleEShop
                             (current as Admin).CreateOrder();
                             break;
                         case "3":
-                            (current as Admin).OrderRegistration();
+                            (current as Admin).OrderRegistration((current as Admin).Login);
                             break;
                         case "4":
                             (current as Admin).EditUserProfile();
@@ -107,6 +106,9 @@ namespace ConsoleEShop
                             (current as Admin).ChangeProductInformation();
                             break;
                         case "7":
+                            (current as Admin).ChangeOrdersStatus();
+                            break;
+                        case "8":
                             (current as Admin).Exit();
                             current = new Guest(Rights.Guest);
                             break;

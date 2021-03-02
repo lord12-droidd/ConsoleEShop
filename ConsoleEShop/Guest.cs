@@ -14,15 +14,16 @@ namespace ConsoleEShop
         }
         public void Registration()
         {
+
             RegistredGuest registredGuest = new RegistredGuest(
-                register.InputName(),
-                register.InputSurname(),
-                register.InputEmail(),
-                register.InputLogin(),
-                register.InputPassword());
+                checker.CheckIsNotEmpty(register.InputName()),
+                checker.CheckIsNotEmpty(register.InputSurname()),
+                checker.CheckIsNotEmpty(register.InputEmail()),
+                checker.CheckIsNotEmpty(register.InputLogin()),
+                checker.CheckIsNotEmpty(register.InputPassword()));
             UsersLocalDB.Add(registredGuest);
         }
-        public bool Enter()
+        public bool Enter(ref User user)
         {
             Console.WriteLine("Вхід у систему, введіть логін:");
             string login = Console.ReadLine();  // додати перевірку на пустоту поля
@@ -33,12 +34,14 @@ namespace ConsoleEShop
             if (checker.CheckEnter(login, password))
             {
                 Console.WriteLine($"Ви увійшли на сайт як {login}");
+                user = new RegistredGuest(Rights.RegistredUser);
+                (user as RegistredGuest).Login = UsersLocalDB.GetUserlogin(login);
                 return true;
             }
             MenuBacker.FailBackMessage();
             return false;
         }
-        public bool EnterAsAdmin(User user)
+        public bool EnterAsAdmin(ref User user)
         {
             Console.WriteLine("Вхід у систему, введіть логін:");
             string login = Console.ReadLine();  // додати перевірку на пустоту поля
@@ -49,7 +52,8 @@ namespace ConsoleEShop
             if (checker.CheckAdminEnter(login, password))
             {
                 Console.WriteLine($"Ви увійшли на сайт як {login}");
-                user.rights = Rights.Admin;
+                user = new Admin(Rights.Admin);
+                (user as Admin).Login = UsersLocalDB.GetAdminlogin();
                 return true;
             }
             MenuBacker.FailBackMessage();
@@ -61,19 +65,21 @@ namespace ConsoleEShop
         {
             for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)
             {
-                Console.WriteLine($"{i}){ProductsLocalDB.GetProducts[i]}");
+                Console.WriteLine($"{i + 1}){ProductsLocalDB.GetProducts[i]}");
             }
             //MenuBacker.BackMessage();
         }
         public void SearchProduct()
         {
+            Checker checker = new Checker();
             Console.WriteLine("Введіть назву товару, який хочете знайти");
             string searched = Console.ReadLine();
+            checker.CheckField(ref searched);
             for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)
             {
                 if (searched == ProductsLocalDB.GetProducts[i].Name)
                 {
-                    Console.WriteLine($"{i}){ProductsLocalDB.GetProducts[i]}");
+                    Console.WriteLine($"{i + 1}){ProductsLocalDB.GetProducts[i]}");
                 }
             }
             Console.ReadKey();

@@ -58,16 +58,52 @@ namespace ConsoleEShop
             }
             MenuBacker.BackMessage();
         }
-        public void ChangeOrderStatus(Order order)
+        public void ChangeOrdersStatus()
         {
             Checker checker = new Checker();
-            Console.WriteLine("Выберите статус заказа: \nNew - 0\nAdminDeny - 1\nPayReceived - 2\nSent - 3\nCompleted - 4");
-            int status = Convert.ToInt32(Console.ReadLine());
-            if (checker.CheckStatus())
+            OrderLocalDB.ShowAllOrders();
+            Console.WriteLine("Выберите id заказа:");
+            string id = Console.ReadLine();
+            if (checker.CheckOrderID(id))
             {
-                order.Status = (OrderStatus)status;
-                MenuBacker.BackMessage();
+                Console.WriteLine("Выберите статус заказа: \nNew - 0\nAdminDeny - 1\nPayReceived - 2\nSent - 3\nCompleted - 4");
+                int status;
+                while (true)
+                {
+                    try
+                    {
+                        status = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Введите число");
+                    }
+                }
+                if (checker.CheckStatus(status))
+                {
+                    for (int i = 0; i < OrderLocalDB.GetOrders.Count; i++)
+                    {
+                        if (id == Convert.ToString(OrderLocalDB.GetOrders[i].ID))
+                        {
+                            OrderLocalDB.GetOrders[i].Status = (OrderStatus)status;
+                            break; // если все ломаеться то убрать брейк
+                        }
+                    }
+                    MenuBacker.BackMessage();
+                }
+                else
+                {
+                    Console.WriteLine("Еужно выбрать один из статусов");
+                    ChangeOrdersStatus();
+                }
             }
+            else
+            {
+                Console.WriteLine("Товара с таким айди нет");
+                return;
+            }
+
         }
         public void EditUserProfile()
         {

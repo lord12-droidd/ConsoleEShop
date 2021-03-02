@@ -19,9 +19,21 @@ namespace ConsoleEShop
         {
             return registredGuests[0].Login;
         }
+        static public string GetUserlogin(string login)
+        {
+            for(int i = 0; i < registredGuests.Count; i++)
+            {
+                if(login == registredGuests[i].Login)
+                {
+                    return registredGuests[i].Login;
+                }
+            }
+            return null;
+        }
         static public void Add(RegistredGuest guest)
         {
             registredGuests.Add(guest);
         }
+
     }
 }

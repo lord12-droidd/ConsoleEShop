@@ -6,23 +6,9 @@ namespace ConsoleEShop
 {
     class Checker : ICheck
     {
-        public bool CheckStatus()
+        public bool CheckStatus(int status)
         {
-            int newStatus;
-            Console.WriteLine("Введіть статус:");  // 
-            while (true)
-            {
-                try
-                {
-                    newStatus = Convert.ToInt32(Console.ReadLine());
-                    break;
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Введите число");
-                }
-            }
-            switch (newStatus)
+            switch (status)
             {
                 case 0:
                     return true;
@@ -44,6 +30,18 @@ namespace ConsoleEShop
                 if (field != "")
                 {
                     return true;
+                }
+                Console.WriteLine("Поле не може бути пустим");
+                field = Console.ReadLine();
+            }
+        }
+        public string CheckIsNotEmpty(string field)
+        {
+            while (true)
+            {
+                if (field != "")
+                {
+                    return field;
                 }
                 Console.WriteLine("Поле не може бути пустим");
                 field = Console.ReadLine();
@@ -110,6 +108,17 @@ namespace ConsoleEShop
             if(order == null)
             {
                 return true;
+            }
+            return false;
+        }
+        public bool CheckOrderID(string id)
+        {
+            for(int i = 0; i < OrderLocalDB.GetOrders.Count; i++)
+            {
+                if(Convert.ToString(OrderLocalDB.GetOrders[i].ID) == id)
+                {
+                    return true;
+                }
             }
             return false;
         }

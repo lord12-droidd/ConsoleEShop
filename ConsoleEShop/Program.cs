@@ -17,8 +17,8 @@ namespace ConsoleEShop
         AdminDeny,
         PayReceived,
         Sent,
-        Received,
         Completed,
+        Received,
         UserDeny,
     }
     interface ICheck
@@ -37,7 +37,7 @@ namespace ConsoleEShop
     interface IGuest : IUser
     {
         void Registration();
-        bool Enter();
+        bool Enter(ref User user);
     }
     interface IRegistred : IGuest
     {
@@ -45,7 +45,6 @@ namespace ConsoleEShop
     }
     class Program
     {
-        public static User currentUser;
         static void Main(string[] args)
         {
             Processes processes = new Processes();

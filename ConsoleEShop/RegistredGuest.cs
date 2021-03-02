@@ -11,7 +11,6 @@ namespace ConsoleEShop
         private string _email;
         private string _login;
         private string _password;
-        private bool _isAdmin;
         public string Name
         {
             get { return (_name); }
@@ -30,7 +29,7 @@ namespace ConsoleEShop
         public string Login
         {
             get { return (_login); }
-            private set { _login = value; }
+            set { _login = value; }
         }
         public string Password
         {
@@ -39,7 +38,7 @@ namespace ConsoleEShop
         }
         public RegistredGuest(string name, string lastname, string email, string login, string password) : base(Rights.RegistredUser)
         {
-            _isAdmin = false;
+            
             _name = name;
             _lastname = lastname;
             _email = email;
@@ -52,7 +51,7 @@ namespace ConsoleEShop
             
         }
 
-        public Order CreateOrder()  // create bucket
+        public Order CreateOrder()
         {
             
             Order order = new Order(this);
@@ -68,7 +67,6 @@ namespace ConsoleEShop
                         order.AddProduct((ProductsLocalDB.GetProducts[i]));
                         Console.WriteLine("Товар успешно заказан");
                         break;
-                        //MenuBacker.BackMessage();
                     }
                     else if (i == ProductsLocalDB.GetProducts.Count - 1 && id != Convert.ToString(ProductsLocalDB.GetProducts[i].ID))
                     {
@@ -79,33 +77,34 @@ namespace ConsoleEShop
                 Console.WriteLine("Нажмите 0 чтобы выйти из создания заказа");
                 if (Console.ReadLine() == "0")
                 {
-                    OrderLocalDB.Add(order);  // Add order to bucket
+                    OrderLocalDB.Add(order,OrderLocalDB.GetOrders.Count+1);
                     break;
                 }
             }
             return order;
         }
-        public void OrderRegistration()
+        public void OrderRegistration(string login)
         {
-            if(ShowOrder() != null)
+            if(ShowOrder(login) != null)
             {
-                //ShowOrder(); //
                 Console.WriteLine("Подтвердить заказ - 0, Отменить заказ - 1");
                 string choice = Console.ReadLine();
                 if (choice == "0")
                 {
-                    OrderLocalDB.GetOrders.Add(ShowOrder());
-                    MenuBacker.BackMessage();
+                    if(ShowOrder(login).Status == OrderStatus.New)
+                    {
+                        MenuBacker.BackMessage();
+                    }
                 }
                 else if (choice == "1")
                 {
-                    OrderLocalDB.GetOrders.Remove(ShowOrder());
+                    OrderLocalDB.GetOrders.Remove(ShowOrder(login));
                     MenuBacker.BackMessage();
                 }
                 else
                 {
                     Console.WriteLine("Выбрана неправильная операция, пересмотрите ваш заказ и выберите операцию");
-                    OrderRegistration();
+                    OrderRegistration(login);
                 }
             }
             else
@@ -114,31 +113,46 @@ namespace ConsoleEShop
             }
         }
 
-        public Order ShowOrder()  // can be void
+        public Order ShowOrder(string login)  // can be void
         {
             for (int i = 0; i < OrderLocalDB.GetOrders.Count; i++)
             {
-                if (OrderLocalDB.GetOrders[i].Receiver == this)
+                if (OrderLocalDB.GetOrders[i].Receiver.Login == login)
                 {
-                    OrderLocalDB.GetOrders[i].GetOrder().ToString();
                     return OrderLocalDB.GetOrders[i];
                 }
             }
             Console.WriteLine("Немає замовлень");
             return null;
         }
+
         //TODO: перегляд історії замовлень та статусу їх доставки
-        public void ChangeOrderStatus()
+        public void ShowAllUserOrders(User current)
+        {
+            Console.WriteLine("Всі замовлення:");
+            for (int i = 0; i < OrderLocalDB.GetOrders.Count; i++)
+            {
+                if (OrderLocalDB.GetOrders[i].Receiver.Login == (current as RegistredGuest).Login)
+                {
+                    foreach (var product in OrderLocalDB.GetOrders[i].GetOrder())
+                    {
+                        Console.WriteLine(product);
+                    }
+                    Console.WriteLine($"{ShowOrder((current as RegistredGuest).Login).Status}");
+                }
+            }
+        }
+        public void ChangeOrderStatus(string login)  //Bug
         {
             Checker checker = new Checker();
-            if(!checker.OrderisNull(ShowOrder()))
+            if(!checker.OrderisNull(ShowOrder(login)))
             {
-                ShowOrder().Status = OrderStatus.Received;
+                ShowOrder(login).Status = OrderStatus.Received;
                 MenuBacker.BackMessage();
             }
 
         }
-        public void ChangePersonalInformation()  // можно убрать параметр так как он будет меня гостя которого передали, а не себя самого
+        public void ChangePersonalInformation()
         {
             Register changer = new Register();
             Name = changer.InputName();
