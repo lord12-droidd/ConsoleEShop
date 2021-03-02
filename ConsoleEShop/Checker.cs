@@ -23,7 +23,7 @@ namespace ConsoleEShop
             }
             return false;
         }
-        public bool CheckField(ref string field)  // Можливий нескінченний цикл нада перевірити буде
+        public bool CheckField(ref string field)
         {
             while (true)
             {

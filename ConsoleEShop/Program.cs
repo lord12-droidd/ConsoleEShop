@@ -23,7 +23,7 @@ namespace ConsoleEShop
     }
     interface ICheck
     {
-        bool CheckProductId(int id);  //Коли адмін буде створювати товар, потрібно перевірити чи він створює товар з унікальним айді
+        bool CheckProductId(int id);
         bool CheckField(ref string field);
         bool CheckEmail(string email);
         bool CheckLogin(string login);
@@ -52,7 +52,5 @@ namespace ConsoleEShop
             Console.ReadKey();
         }
     }
-    // зробити юзера який має статус, тому що ми повинні якось переходити з стану гостя в стан зареєстрованного користувача, при виконані методу Ентер, ми будемо міняти статус юзера з гостя на зарєганого чи адміна
-    //тоді для цього нам потрібно додати поле із статусом в нашого юзера, можливо створити якийсь енам
     
 }

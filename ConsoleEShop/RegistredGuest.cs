@@ -125,8 +125,6 @@ namespace ConsoleEShop
             Console.WriteLine("Немає замовлень");
             return null;
         }
-
-        //TODO: перегляд історії замовлень та статусу їх доставки
         public void ShowAllUserOrders(User current)
         {
             Console.WriteLine("Всі замовлення:");
@@ -142,7 +140,7 @@ namespace ConsoleEShop
                 }
             }
         }
-        public void ChangeOrderStatus(string login)  //Bug
+        public void ChangeOrderStatus(string login)
         {
             Checker checker = new Checker();
             if(!checker.OrderisNull(ShowOrder(login)))
@@ -155,9 +153,10 @@ namespace ConsoleEShop
         public void ChangePersonalInformation()
         {
             Register changer = new Register();
-            Name = changer.InputName();
-            Lastname = changer.InputSurname();
-            Email = changer.InputEmail();
+            Checker checker = new Checker();
+            Name = checker.CheckIsNotEmpty(changer.InputName());
+            Lastname = checker.CheckIsNotEmpty(changer.InputSurname());
+            Email = checker.CheckIsNotEmpty(changer.InputEmail());
             MenuBacker.BackMessage();
         }
         public void Exit()

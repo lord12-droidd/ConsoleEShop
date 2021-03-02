@@ -11,7 +11,7 @@ namespace ConsoleEShop
         public int InputId()
         {
             int newID;
-            Console.WriteLine("Введіть ID:");  // 
+            Console.WriteLine("Введіть ID:");
             while (true)
             {
                 try

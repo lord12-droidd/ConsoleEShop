@@ -11,8 +11,10 @@ namespace ConsoleEShop
             User current = new Guest(Rights.Guest);
             while (true)
             {
+                Console.WriteLine();
                 ShowMenu(current);
                 string choice = Console.ReadLine();
+                Console.WriteLine();
 
                 if (current.rights == Rights.Guest)
                 {
@@ -54,27 +56,35 @@ namespace ConsoleEShop
                     {
                         case "0":
                             (current as RegistredGuest).ViewProductsList();
+                            Console.WriteLine();
                             break;
                         case "1":
                             (current as RegistredGuest).SearchProduct();
+                            Console.WriteLine();
                             break;
                         case "2":
                             (current as RegistredGuest).CreateOrder();
+                            Console.WriteLine();
                             break;
                         case "3":
                             (current as RegistredGuest).OrderRegistration((current as RegistredGuest).Login);
+                            Console.WriteLine();
                             break;
                         case "4":
                             (current as RegistredGuest).ShowAllUserOrders(current); // історію замовлень доробити
+                            Console.WriteLine();
                             break;
                         case "5":
                             (current as RegistredGuest).ChangeOrderStatus((current as RegistredGuest).Login);
+                            Console.WriteLine();
                             break;
                         case "6":
                             (current as RegistredGuest).ChangePersonalInformation();
+                            Console.WriteLine();
                             break;
                         case "7":
                             (current as RegistredGuest).Exit();
+                            Console.WriteLine();
                             current = new Guest(Rights.Guest);
                             break;
                     }
@@ -85,31 +95,41 @@ namespace ConsoleEShop
                     {
                         case "0":
                             (current as Admin).ViewProductsList();
+                            Console.WriteLine();
                             break;
                         case "1":
                             (current as Admin).SearchProduct();
+                            Console.WriteLine();
                             break;
                         case "2":
                             (current as Admin).CreateOrder();
+                            Console.WriteLine();
                             break;
                         case "3":
                             (current as Admin).OrderRegistration((current as Admin).Login);
+                            Console.WriteLine();
                             break;
                         case "4":
                             (current as Admin).EditUserProfile();
+                            Console.WriteLine();
                             break;
                         case "5":
                             (current as Admin).AddNewProduct();
+                            Console.WriteLine();
                             break;
                         case "6":
                             (current as Admin).ViewProductsList();
+                            Console.WriteLine();
                             (current as Admin).ChangeProductInformation();
+                            Console.WriteLine();
                             break;
                         case "7":
                             (current as Admin).ChangeOrdersStatus();
+                            Console.WriteLine();
                             break;
                         case "8":
                             (current as Admin).Exit();
+                            Console.WriteLine();
                             current = new Guest(Rights.Guest);
                             break;
 

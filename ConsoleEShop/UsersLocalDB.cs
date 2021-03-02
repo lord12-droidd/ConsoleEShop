@@ -7,7 +7,7 @@ namespace ConsoleEShop
     static class UsersLocalDB
     {
         static private List<RegistredGuest> registredGuests = new List<RegistredGuest>() {
-        new RegistredGuest("Dima","Melnyk","sfsdf@.com","lord_12","English55")};
+        new RegistredGuest("Dima","Melnyk","sfsdf@.com","Admin","Admin")};
         static public List<RegistredGuest> GetRegistredGuests
         {
             get

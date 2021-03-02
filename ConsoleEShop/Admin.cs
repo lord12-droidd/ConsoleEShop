@@ -26,12 +26,13 @@ namespace ConsoleEShop
         }
         public void AddNewProduct()
         {
+            Checker cheker = new Checker();
             ProductCreater creater = new ProductCreater();
             Product newProduct = new Product(
                 creater.InputId(),
-                creater.InputName(),
-                creater.InputCategory(),
-                creater.InputDescription(),
+                cheker.CheckIsNotEmpty(creater.InputName()),
+                cheker.CheckIsNotEmpty(creater.InputCategory()),
+                cheker.CheckIsNotEmpty(creater.InputDescription()),
                 creater.InputCost()
                 );
             ProductsLocalDB.Add(newProduct);
@@ -39,6 +40,7 @@ namespace ConsoleEShop
         }
         public void ChangeProductInformation()
         {
+            Checker checker = new Checker();
             Console.WriteLine("Введіть айди товару, який хочете змінити");
             string id = Console.ReadLine();
             ProductCreater changer = new ProductCreater();
@@ -46,9 +48,9 @@ namespace ConsoleEShop
             {
                 if (Convert.ToString(ProductsLocalDB.GetProducts[i].ID) == id)
                 {
-                    ProductsLocalDB.GetProducts[i].Name = changer.InputName();
-                    ProductsLocalDB.GetProducts[i].Category = changer.InputCategory();
-                    ProductsLocalDB.GetProducts[i].Description = changer.InputDescription();
+                    ProductsLocalDB.GetProducts[i].Name = checker.CheckIsNotEmpty(changer.InputName());
+                    ProductsLocalDB.GetProducts[i].Category = checker.CheckIsNotEmpty(changer.InputCategory());
+                    ProductsLocalDB.GetProducts[i].Description = checker.CheckIsNotEmpty(changer.InputDescription());
                     ProductsLocalDB.GetProducts[i].Cost = changer.InputCost();
                 }
                 else if(Convert.ToString(ProductsLocalDB.GetProducts[i].ID) != id && i == ProductsLocalDB.GetProducts.Count-1)
@@ -87,14 +89,14 @@ namespace ConsoleEShop
                         if (id == Convert.ToString(OrderLocalDB.GetOrders[i].ID))
                         {
                             OrderLocalDB.GetOrders[i].Status = (OrderStatus)status;
-                            break; // если все ломаеться то убрать брейк
+                            break;
                         }
                     }
                     MenuBacker.BackMessage();
                 }
                 else
                 {
-                    Console.WriteLine("Еужно выбрать один из статусов");
+                    Console.WriteLine("Нужно выбрать один из статусов");
                     ChangeOrdersStatus();
                 }
             }
@@ -122,7 +124,6 @@ namespace ConsoleEShop
                     UsersLocalDB.GetRegistredGuests[i].Name = register.InputName();
                     UsersLocalDB.GetRegistredGuests[i].Lastname = register.InputSurname();
                     MenuBacker.BackMessage();
-                    // создать абстрактный класс User меню опций которое опционально для каждого вида юзера
                 }
             }
 

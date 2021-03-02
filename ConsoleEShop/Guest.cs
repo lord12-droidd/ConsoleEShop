@@ -26,10 +26,10 @@ namespace ConsoleEShop
         public bool Enter(ref User user)
         {
             Console.WriteLine("Вхід у систему, введіть логін:");
-            string login = Console.ReadLine();  // додати перевірку на пустоту поля
+            string login = Console.ReadLine();
             checker.CheckField(ref login);
             Console.WriteLine("Вхід у систему, введіть пароль:");
-            string password = Console.ReadLine(); // додати перевірку на пустоту поля
+            string password = Console.ReadLine();
             checker.CheckField(ref password);
             if (checker.CheckEnter(login, password))
             {
@@ -44,10 +44,10 @@ namespace ConsoleEShop
         public bool EnterAsAdmin(ref User user)
         {
             Console.WriteLine("Вхід у систему, введіть логін:");
-            string login = Console.ReadLine();  // додати перевірку на пустоту поля
+            string login = Console.ReadLine();
             checker.CheckField(ref login);
             Console.WriteLine("Вхід у систему, введіть пароль:");
-            string password = Console.ReadLine(); // додати перевірку на пустоту поля
+            string password = Console.ReadLine();
             checker.CheckField(ref password);
             if (checker.CheckAdminEnter(login, password))
             {
@@ -67,7 +67,6 @@ namespace ConsoleEShop
             {
                 Console.WriteLine($"{i + 1}){ProductsLocalDB.GetProducts[i]}");
             }
-            //MenuBacker.BackMessage();
         }
         public void SearchProduct()
         {
