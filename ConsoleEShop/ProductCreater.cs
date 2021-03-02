@@ -11,7 +11,7 @@ namespace ConsoleEShop
         public int InputId()
         {
             int newID;
-            Console.WriteLine("Введіть ID:");
+            Console.WriteLine("Input ID:");
             while (true)
             {
                 try
@@ -19,7 +19,7 @@ namespace ConsoleEShop
                     int id = Convert.ToInt32(Console.ReadLine());
                     if (checker.CheckProductId(id))
                     {
-                        Console.WriteLine("Такий id вже існує");
+                        Console.WriteLine("Such an ID already exists");
                         continue;
                     }
                     newID = id;
@@ -27,7 +27,7 @@ namespace ConsoleEShop
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Введите число");
+                    Console.WriteLine("It must be number");
                 }
             }
             return newID;
@@ -35,26 +35,26 @@ namespace ConsoleEShop
 
         public string InputName()
         {
-            Console.WriteLine("Введіть ім'я товару:");
+            Console.WriteLine("Input the product name:");
             return Console.ReadLine();
         }
 
         public string InputCategory()
         {
-            Console.WriteLine("Введіть категорію товару:");
+            Console.WriteLine("Input the product category:");
             return Console.ReadLine();
         }
 
         public string InputDescription()
         {
-            Console.WriteLine("Введіть опис товару:");
+            Console.WriteLine("Input the product description:");
             return Console.ReadLine();
         }
 
         public decimal InputCost()
         {
             decimal newCost;
-            Console.WriteLine("Введіть ціну:");  // 
+            Console.WriteLine("Input the product cost:");  
             while (true)
             {
                 try
@@ -64,7 +64,7 @@ namespace ConsoleEShop
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Введите число");
+                    Console.WriteLine("It must be number");
                 }
             }
             return newCost;

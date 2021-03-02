@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleEShop
 {
-    class Order
+    public class Order
     {
         List<Product> order = new List<Product>();
         public OrderStatus Status { get; set; }
@@ -54,7 +54,7 @@ namespace ConsoleEShop
                 Console.WriteLine(product);
                 Console.WriteLine($"{Status}");
             }
-            return $"Полная стоимость заказа: {FullCost}\n ID: {ID}";
+            return $" ID: {ID}";
         }
     }
 }

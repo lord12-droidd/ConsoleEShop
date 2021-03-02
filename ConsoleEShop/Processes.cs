@@ -71,7 +71,7 @@ namespace ConsoleEShop
                             Console.WriteLine();
                             break;
                         case "4":
-                            (current as RegistredGuest).ShowAllUserOrders(current); // історію замовлень доробити
+                            (current as RegistredGuest).ShowAllUserOrders(current);
                             Console.WriteLine();
                             break;
                         case "5":
@@ -145,34 +145,34 @@ namespace ConsoleEShop
         {
             if(current.rights == Rights.Guest)
             {
-                Console.WriteLine("Перегляд переліку товарів - 0");
-                Console.WriteLine("Пошук товару за назвою - 1");
-                Console.WriteLine("Реєстрація опікового запису користувача - 2");
-                Console.WriteLine("Вхід до інтернет-магазину - 3");
-                Console.WriteLine("Вхід до інтернет-магазину як адмін - 4");
+                Console.WriteLine("Show product list - 0");
+                Console.WriteLine("Search product by name - 1");
+                Console.WriteLine("Registration - 2");
+                Console.WriteLine("Enter as User - 3");
+                Console.WriteLine("Enter as Admin - 4");
             }
             else if (current.rights == Rights.RegistredUser)
             {
-                Console.WriteLine("Перегляд переліку товарів - 0");
-                Console.WriteLine("Пошук товару за назвою - 1");
-                Console.WriteLine("Cтворення нового замовлення - 2");
-                Console.WriteLine("Оформлення замовлення або відміна - 3");
-                Console.WriteLine("Перегляд історії замовлень та статусу їх доставки - 4");
-                Console.WriteLine("Встановлення статусу замовлення «Отримано» - 5");
-                Console.WriteLine("Зміна персональної інформації - 6");
-                Console.WriteLine("Вихід з облікового запису - 7");
+                Console.WriteLine("Show product list - 0");
+                Console.WriteLine("Search product by name - 1");
+                Console.WriteLine("Create new order - 2");
+                Console.WriteLine("Ordering or cancellation - 3");
+                Console.WriteLine("View order history and delivery status - 4");
+                Console.WriteLine("Setting the status of the order 'Received' - 5");
+                Console.WriteLine("Change personal information - 6");
+                Console.WriteLine("Exit - 7");
             }
             else if (current.rights == Rights.Admin)
             {
-                Console.WriteLine("Перегляд переліку товарів - 0");
-                Console.WriteLine("Пошук товару за назвою - 1");
-                Console.WriteLine("Cтворення нового замовлення - 2");
-                Console.WriteLine("Оформлення замовлення або відміна - 3");
-                Console.WriteLine("Перегляд та зміна персональної інформації користувачів; - 4");
-                Console.WriteLine("Додавання нового товару - 5");
-                Console.WriteLine("Зміна інформації про товар - 6");
-                Console.WriteLine("Зміна статусу заломлення - 7");
-                Console.WriteLine("Вихід з облікового запису - 8");
+                Console.WriteLine("Show product list - 0");
+                Console.WriteLine("Search product by name - 1");
+                Console.WriteLine("Create new order - 2");
+                Console.WriteLine("Ordering or cancellation - 3");
+                Console.WriteLine("View and change personal information of users - 4");
+                Console.WriteLine("Add new product - 5");
+                Console.WriteLine("Change information about product - 6");
+                Console.WriteLine("Change order status - 7");
+                Console.WriteLine("Exit - 8");
             }
             
         }

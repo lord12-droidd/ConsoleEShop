@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleEShop
 {
-    class Product
+    public class Product
     {
         public int ID { private set; get; }
         public string Name { set; get; }

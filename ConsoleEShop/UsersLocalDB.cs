@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleEShop
 {
-    static class UsersLocalDB
+    public static class UsersLocalDB
     {
         static private List<RegistredGuest> registredGuests = new List<RegistredGuest>() {
         new RegistredGuest("Dima","Melnyk","sfsdf@.com","Admin","Admin")};

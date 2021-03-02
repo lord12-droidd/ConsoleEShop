@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace ConsoleEShop
 {
-    enum Rights
+    public enum Rights
     {
         Guest,
         RegistredUser,
         Admin,
     }
-    enum OrderStatus
+    public enum OrderStatus
     {
         New,
         AdminDeny,

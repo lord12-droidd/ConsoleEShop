@@ -8,12 +8,12 @@ namespace ConsoleEShop
     {
         public static void BackMessage()
         {
-            Console.WriteLine("Успех, нажмите кнопку чтобы вернуться к меню выбора");
+            Console.WriteLine("Success, press the button to return to the selection menu");
             Console.ReadKey();
         }
         public static void FailBackMessage()
         {
-            Console.WriteLine("Провал, нажмите кнопку чтобы вернуться к меню выбора");
+            Console.WriteLine("Fail, press the button to return to the selection menu");
             Console.ReadKey();
         }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleEShop
 {
-    class Guest : User, IGuest
+    public class Guest : User, IGuest
     {
         Checker checker = new Checker();
         Register register = new Register();
@@ -23,17 +23,21 @@ namespace ConsoleEShop
                 checker.CheckIsNotEmpty(register.InputPassword()));
             UsersLocalDB.Add(registredGuest);
         }
+        public Guest()
+        {
+
+        }
         public bool Enter(ref User user)
         {
-            Console.WriteLine("Вхід у систему, введіть логін:");
+            Console.WriteLine("Enter login:");
             string login = Console.ReadLine();
             checker.CheckField(ref login);
-            Console.WriteLine("Вхід у систему, введіть пароль:");
+            Console.WriteLine("Enter password:");
             string password = Console.ReadLine();
             checker.CheckField(ref password);
             if (checker.CheckEnter(login, password))
             {
-                Console.WriteLine($"Ви увійшли на сайт як {login}");
+                Console.WriteLine($"You were entered as {login}");
                 user = new RegistredGuest(Rights.RegistredUser);
                 (user as RegistredGuest).Login = UsersLocalDB.GetUserlogin(login);
                 return true;
@@ -43,15 +47,15 @@ namespace ConsoleEShop
         }
         public bool EnterAsAdmin(ref User user)
         {
-            Console.WriteLine("Вхід у систему, введіть логін:");
+            Console.WriteLine("Enter login:");
             string login = Console.ReadLine();
             checker.CheckField(ref login);
-            Console.WriteLine("Вхід у систему, введіть пароль:");
+            Console.WriteLine("Enter password:");
             string password = Console.ReadLine();
             checker.CheckField(ref password);
             if (checker.CheckAdminEnter(login, password))
             {
-                Console.WriteLine($"Ви увійшли на сайт як {login}");
+                Console.WriteLine($"You were entered as {login}");
                 user = new Admin(Rights.Admin);
                 (user as Admin).Login = UsersLocalDB.GetAdminlogin();
                 return true;
@@ -71,7 +75,7 @@ namespace ConsoleEShop
         public void SearchProduct()
         {
             Checker checker = new Checker();
-            Console.WriteLine("Введіть назву товару, який хочете знайти");
+            Console.WriteLine("Enter the name of the product you want to find");
             string searched = Console.ReadLine();
             checker.CheckField(ref searched);
             for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)

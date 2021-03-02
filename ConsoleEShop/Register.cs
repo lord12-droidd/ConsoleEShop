@@ -9,13 +9,13 @@ namespace ConsoleEShop
         Checker checker = new Checker();
         public string InputName()
         {
-            Console.WriteLine("Введіть ім'я:");
+            Console.WriteLine("Input your name:");
             return Console.ReadLine();
         }
 
         public string InputSurname()
         {
-            Console.WriteLine("Введіть прізвище:");
+            Console.WriteLine("Input your surname:");
             return Console.ReadLine();
         }
 
@@ -24,11 +24,11 @@ namespace ConsoleEShop
             string email;
             while (true)
             {
-                Console.WriteLine("Введіть email:");
+                Console.WriteLine("Input your email:");
                 email = Console.ReadLine();
                 if (checker.CheckEmail(email))
                 {
-                    Console.WriteLine("Введений email вже використовується");
+                    Console.WriteLine("The inputed email is already in use");
                     continue;
                 }
                 break;
@@ -41,11 +41,11 @@ namespace ConsoleEShop
             string login;
             while (true)
             {
-                Console.WriteLine("Введіть свій login:");
+                Console.WriteLine("Login:");
                 login = Console.ReadLine();
                 if (checker.CheckLogin(login))
                 {
-                    Console.WriteLine("Введений login вже використовується");
+                    Console.WriteLine("The inputed login is already in use");
                     continue;
                 }
                 break;
@@ -55,7 +55,7 @@ namespace ConsoleEShop
 
         public string InputPassword()
         {
-            Console.WriteLine("Вигадайте свій пароль:");
+            Console.WriteLine("Password:");
             return Console.ReadLine();
         }
     }

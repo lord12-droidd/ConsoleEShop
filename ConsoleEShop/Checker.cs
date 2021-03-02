@@ -31,7 +31,7 @@ namespace ConsoleEShop
                 {
                     return true;
                 }
-                Console.WriteLine("Поле не може бути пустим");
+                Console.WriteLine("Field can`t be an empty");
                 field = Console.ReadLine();
             }
         }
@@ -43,7 +43,7 @@ namespace ConsoleEShop
                 {
                     return field;
                 }
-                Console.WriteLine("Поле не може бути пустим");
+                Console.WriteLine("Field can`t be an empty");
                 field = Console.ReadLine();
             }
         }

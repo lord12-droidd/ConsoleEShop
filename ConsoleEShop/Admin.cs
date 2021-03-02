@@ -41,7 +41,7 @@ namespace ConsoleEShop
         public void ChangeProductInformation()
         {
             Checker checker = new Checker();
-            Console.WriteLine("Введіть айди товару, який хочете змінити");
+            Console.WriteLine("Enter the product ID that you want to change");
             string id = Console.ReadLine();
             ProductCreater changer = new ProductCreater();
             for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)
@@ -55,7 +55,7 @@ namespace ConsoleEShop
                 }
                 else if(Convert.ToString(ProductsLocalDB.GetProducts[i].ID) != id && i == ProductsLocalDB.GetProducts.Count-1)
                 {
-                    Console.WriteLine("Товара з таким айди немає");
+                    Console.WriteLine("There is no product for such ID");
                 }
             }
             MenuBacker.BackMessage();
@@ -64,11 +64,11 @@ namespace ConsoleEShop
         {
             Checker checker = new Checker();
             OrderLocalDB.ShowAllOrders();
-            Console.WriteLine("Выберите id заказа:");
+            Console.WriteLine("Select order ID:");
             string id = Console.ReadLine();
             if (checker.CheckOrderID(id))
             {
-                Console.WriteLine("Выберите статус заказа: \nNew - 0\nAdminDeny - 1\nPayReceived - 2\nSent - 3\nCompleted - 4");
+                Console.WriteLine("Select order status: \nNew - 0 \nAdminDeny - 1 \nPayReceived - 2 \nSent - 3 \nCompleted - 4");
                 int status;
                 while (true)
                 {
@@ -79,7 +79,7 @@ namespace ConsoleEShop
                     }
                     catch
                     {
-                        Console.WriteLine("Введите число");
+                        Console.WriteLine("It must be a number");
                     }
                 }
                 if (checker.CheckStatus(status))
@@ -96,13 +96,13 @@ namespace ConsoleEShop
                 }
                 else
                 {
-                    Console.WriteLine("Нужно выбрать один из статусов");
+                    Console.WriteLine("You need to choose one of the statuses");
                     ChangeOrdersStatus();
                 }
             }
             else
             {
-                Console.WriteLine("Товара с таким айди нет");
+                Console.WriteLine("There is no product with such an ID");
                 return;
             }
 
@@ -115,7 +115,7 @@ namespace ConsoleEShop
             {
                 UsersLocalDB.GetRegistredGuests[i].ToString();
             }
-            Console.WriteLine("Введите логин юзера для редагирования:");
+            Console.WriteLine("Enter user login for editing:");
             string login = Console.ReadLine();
             for(int i = 0; i < UsersLocalDB.GetRegistredGuests.Count; i++)
             {

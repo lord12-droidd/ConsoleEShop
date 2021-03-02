@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleEShop
 {
-    class RegistredGuest : Guest, IRegistred
+    public class RegistredGuest : Guest, IRegistred
     {
         private string _name;
         private string _lastname;
@@ -51,6 +51,11 @@ namespace ConsoleEShop
             
         }
 
+        public RegistredGuest()
+        {
+
+        }
+
         public Order CreateOrder()
         {
             
@@ -58,23 +63,24 @@ namespace ConsoleEShop
             while (true)
             {
                 ViewProductsList();
-                Console.WriteLine("Выберите айди товара который хотите заказать:");
+                Console.WriteLine("Select the ID of the product you want to order:");
                 string id = Console.ReadLine();
                 for (int i = 0; i < ProductsLocalDB.GetProducts.Count; i++)
                 {
                     if (id == Convert.ToString(ProductsLocalDB.GetProducts[i].ID))
                     {
                         order.AddProduct((ProductsLocalDB.GetProducts[i]));
-                        Console.WriteLine("Товар успешно заказан");
+                        Console.WriteLine("Product ordered successfully");
                         break;
                     }
                     else if (i == ProductsLocalDB.GetProducts.Count - 1 && id != Convert.ToString(ProductsLocalDB.GetProducts[i].ID))
                     {
-                        Console.WriteLine("Товара с таким айди не существует");
+                        Console.WriteLine("There is no product with this ID");
         
                     }
                 }
-                Console.WriteLine("Нажмите 0 чтобы выйти из создания заказа");
+                Console.WriteLine();
+                Console.WriteLine("Press 0 to exit order creation");
                 if (Console.ReadLine() == "0")
                 {
                     OrderLocalDB.Add(order,OrderLocalDB.GetOrders.Count+1);
@@ -87,7 +93,7 @@ namespace ConsoleEShop
         {
             if(ShowOrder(login) != null)
             {
-                Console.WriteLine("Подтвердить заказ - 0, Отменить заказ - 1");
+                Console.WriteLine("Confirm order - 0, Cancel order - 1");
                 string choice = Console.ReadLine();
                 if (choice == "0")
                 {
@@ -103,7 +109,7 @@ namespace ConsoleEShop
                 }
                 else
                 {
-                    Console.WriteLine("Выбрана неправильная операция, пересмотрите ваш заказ и выберите операцию");
+                    Console.WriteLine("Wrong operation selected, revise your order and select operation");
                     OrderRegistration(login);
                 }
             }
@@ -113,7 +119,7 @@ namespace ConsoleEShop
             }
         }
 
-        public Order ShowOrder(string login)  // can be void
+        public Order ShowOrder(string login)
         {
             for (int i = 0; i < OrderLocalDB.GetOrders.Count; i++)
             {
@@ -122,12 +128,12 @@ namespace ConsoleEShop
                     return OrderLocalDB.GetOrders[i];
                 }
             }
-            Console.WriteLine("Немає замовлень");
+            Console.WriteLine("No orders");
             return null;
         }
         public void ShowAllUserOrders(User current)
         {
-            Console.WriteLine("Всі замовлення:");
+            Console.WriteLine("All orders:");
             for (int i = 0; i < OrderLocalDB.GetOrders.Count; i++)
             {
                 if (OrderLocalDB.GetOrders[i].Receiver.Login == (current as RegistredGuest).Login)
@@ -162,7 +168,7 @@ namespace ConsoleEShop
         public void Exit()
         {
             rights = Rights.Guest;
-            Console.WriteLine("Ви успішно вийшли");
+            Console.WriteLine("You have successfully logged out");
         }
 
         public override string ToString()

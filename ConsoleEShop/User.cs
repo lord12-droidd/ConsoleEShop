@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleEShop
 {
-    abstract class User
+    public abstract class User
     {
         public Rights rights;
     }
